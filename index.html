@@ -1,0 +1,2874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="Chinthala Akhila - Java Full Stack Developer Portfolio">
+
+  <title>Chinthala Akhila | Java Full-Stack Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+  <style>
+
+    /* ==============================
+       GLOBAL
+    ============================== */
+
+    :root {
+      --bg: #070b17;
+      --bg2: #0c1222;
+      --card: rgba(15, 23, 42, 0.75);
+      --white: #ffffff;
+      --text: #f5f7ff;
+      --muted: #a6b0c5;
+      --primary: #7c5cff;
+      --secondary: #21d4fd;
+      --green: #48e6a1;
+      --border: rgba(255,255,255,0.09);
+      --shadow: 0 25px 70px rgba(0,0,0,0.35);
+      --radius: 24px;
+      --max-width: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background:
+        radial-gradient(
+          circle at 15% 10%,
+          rgba(124,92,255,0.13),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 90% 30%,
+          rgba(33,212,253,0.08),
+          transparent 25%
+        ),
+        var(--bg);
+
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.25;
+
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        );
+
+      background-size: 44px 44px;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(
+        var(--max-width),
+        calc(100% - 40px)
+      );
+
+      margin: auto;
+    }
+
+    .section {
+      padding: 105px 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    .brand {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    /* ==============================
+       SECTION HEADER
+    ============================== */
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: #bcaeff;
+
+      text-transform: uppercase;
+      letter-spacing: 2px;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      margin-bottom: 14px;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 28px;
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--primary),
+          var(--secondary)
+        );
+    }
+
+    .section-head h2 {
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    /* ==============================
+       NAVBAR
+    ============================== */
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+
+      border-bottom: 1px solid transparent;
+
+      transition: 0.3s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(7,11,23,0.82);
+      backdrop-filter: blur(20px);
+      border-color: var(--border);
+    }
+
+    .nav-inner {
+      height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+    }
+
+    .brand span {
+      color: var(--secondary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 29px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #c4ccdc;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: white;
+    }
+
+    .nav-cta {
+      padding: 10px 16px;
+
+      border: 1px solid rgba(124,92,255,0.45);
+      border-radius: 12px;
+
+      background: rgba(124,92,255,0.12);
+
+      color: white !important;
+    }
+
+    .menu-btn {
+      display: none;
+
+      width: 42px;
+      height: 42px;
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      background: rgba(255,255,255,0.04);
+      color: white;
+
+      cursor: pointer;
+    }
+
+    /* ==============================
+       HERO
+    ============================== */
+
+    .hero {
+      min-height: 100vh;
+
+      display: grid;
+      align-items: center;
+
+      padding: 135px 0 90px;
+
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.35fr
+        0.65fr;
+
+      gap: 80px;
+
+      align-items: center;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 8px 13px;
+
+      border: 1px solid rgba(72,230,161,0.2);
+      border-radius: 999px;
+
+      background: rgba(72,230,161,0.07);
+
+      color: #8af0bd;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      margin-bottom: 25px;
+    }
+
+    .status i {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow:
+        0 0 13px var(--green);
+    }
+
+    .hero h1 {
+      font-size: clamp(52px, 7.5vw, 91px);
+
+      line-height: 0.96;
+
+      letter-spacing: -5px;
+
+      max-width: 900px;
+    }
+
+    .gradient {
+      background:
+        linear-gradient(
+          100deg,
+          #ffffff 5%,
+          #b8aaff 42%,
+          #5ee7ff 95%
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 690px;
+
+      color: var(--muted);
+
+      font-size: 18px;
+
+      margin: 25px 0 31px;
+    }
+
+    .hero-copy strong {
+      color: white;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+
+      min-height: 50px;
+
+      padding: 0 19px;
+
+      border-radius: 13px;
+
+      border: 1px solid var(--border);
+
+      background: #121a2d;
+
+      color: white;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition: 0.25s ease;
+    }
+
+    .btn.primary {
+      border-color: transparent;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          #5c8dff
+        );
+
+      box-shadow:
+        0 12px 35px rgba(124,92,255,0.25);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+
+      border-color:
+        rgba(255,255,255,0.18);
+    }
+
+    .btn.primary:hover {
+      box-shadow:
+        0 16px 45px rgba(124,92,255,0.35);
+    }
+
+    /* ==============================
+       SOCIAL
+    ============================== */
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .social {
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--border);
+
+      border-radius: 12px;
+
+      color: #c4ccdc;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      transition: 0.25s;
+    }
+
+    .social:hover {
+      color: white;
+
+      border-color:
+        rgba(124,92,255,0.6);
+
+      background:
+        rgba(124,92,255,0.1);
+
+      transform: translateY(-2px);
+    }
+
+    /* ==============================
+       HERO PROFILE CARD
+    ============================== */
+
+    .hero-visual {
+      position: relative;
+
+      min-height: 450px;
+
+      display: grid;
+      place-items: center;
+    }
+
+    .orb {
+      position: absolute;
+
+      width: 330px;
+      height: 330px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 35% 30%,
+          rgba(124,92,255,0.48),
+          rgba(33,212,253,0.09) 48%,
+          transparent 70%
+        );
+
+      filter: blur(2px);
+
+      animation:
+        float 6s ease-in-out infinite;
+    }
+
+    .profile-card {
+      position: relative;
+
+      width: min(350px,100%);
+
+      padding: 28px;
+
+      border:
+        1px solid rgba(255,255,255,0.11);
+
+      border-radius: 30px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(20,29,49,0.88),
+          rgba(10,15,28,0.8)
+        );
+
+      box-shadow: var(--shadow);
+
+      backdrop-filter: blur(18px);
+
+      animation:
+        float 6s ease-in-out infinite reverse;
+    }
+
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      padding-bottom: 23px;
+
+      border-bottom:
+        1px solid var(--border);
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+
+      border-radius: 20px;
+
+      display: grid;
+      place-items: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--secondary)
+        );
+
+      font-family:
+        "Space Grotesk";
+
+      font-weight: 700;
+      font-size: 21px;
+
+      box-shadow:
+        0 12px 30px rgba(124,92,255,0.25);
+    }
+
+    .profile-top h3 {
+      font-size: 18px;
+    }
+
+    .profile-top p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .facts {
+      display: grid;
+      gap: 14px;
+
+      padding-top: 22px;
+    }
+
+    .fact {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      font-size: 13px;
+    }
+
+    .fact span:first-child {
+      color: #78849a;
+    }
+
+    .fact span:last-child {
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .mini-stack {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 7px;
+
+      margin-top: 20px;
+    }
+
+    .mini-stack span {
+      padding: 6px 9px;
+
+      border-radius: 8px;
+
+      background:
+        rgba(255,255,255,0.05);
+
+      border:
+        1px solid var(--border);
+
+      font-size: 11px;
+
+      color: #c9d2e4;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-13px);
+      }
+
+    }
+
+    /* ==============================
+       COMMON GLASS
+    ============================== */
+
+    .glass {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(18,27,46,0.82),
+          rgba(11,17,31,0.72)
+        );
+
+      border:
+        1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.18);
+
+      backdrop-filter: blur(16px);
+    }
+
+    /* ==============================
+       ABOUT
+    ============================== */
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      gap: 25px;
+    }
+
+    .about-card {
+      padding: 31px;
+    }
+
+    .about-card h3 {
+      font-size: 23px;
+      margin-bottom: 13px;
+    }
+
+    .about-card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .about-card p + p {
+      margin-top: 13px;
+    }
+
+    /* ==============================
+       SKILLS
+    ============================== */
+
+    .skills-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+    .skill-card {
+      padding: 25px;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 17px;
+
+      font-size: 18px;
+    }
+
+    .skill-tags {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+    }
+
+    .skill-tags span {
+      padding: 7px 10px;
+
+      border-radius: 9px;
+
+      background:
+        rgba(255,255,255,0.045);
+
+      border:
+        1px solid var(--border);
+
+      color: #cdd5e6;
+
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* ==============================
+       PROJECTS
+    ============================== */
+
+    .web-projects-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 22px;
+    }
+
+    .web-project-card {
+      position: relative;
+
+      display: flex;
+      gap: 22px;
+
+      padding: 27px;
+
+      min-height: 245px;
+
+      overflow: hidden;
+
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .web-project-card::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 3px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--primary),
+          var(--secondary)
+        );
+    }
+
+    .web-project-card:hover {
+      transform: translateY(-7px);
+
+      border-color:
+        rgba(124,92,255,0.35);
+
+      box-shadow:
+        0 25px 60px rgba(0,0,0,0.25);
+    }
+
+    .web-project-number {
+      min-width: 48px;
+      height: 48px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(124,92,255,0.18),
+          rgba(33,212,253,0.1)
+        );
+
+      border:
+        1px solid rgba(124,92,255,0.25);
+
+      color: #bcaeff;
+
+      font-family:
+        "Space Grotesk";
+
+      font-weight: 700;
+    }
+
+    .web-project-content {
+      flex: 1;
+    }
+
+    .web-project-type {
+      color: #8f9bb2;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1.5px;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      margin-bottom: 8px;
+    }
+
+    .web-project-content h3 {
+      font-size: 22px;
+
+      margin-bottom: 10px;
+    }
+
+    .web-project-content p {
+      color: var(--muted);
+
+      font-size: 14px;
+
+      margin-bottom: 19px;
+    }
+
+    .project-tech {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 7px;
+
+      margin-bottom: 18px;
+    }
+
+    .project-tech span {
+      padding: 5px 8px;
+
+      border-radius: 7px;
+
+      background:
+        rgba(255,255,255,0.045);
+
+      border:
+        1px solid var(--border);
+
+      color: #c9d2e4;
+
+      font-size: 10px;
+
+      font-weight: 600;
+    }
+
+    .project-link {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding: 9px 13px;
+
+      border-radius: 10px;
+
+      background:
+        rgba(124,92,255,0.12);
+
+      border:
+        1px solid rgba(124,92,255,0.28);
+
+      color: #dcd6ff;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      transition: 0.2s;
+    }
+
+    .project-link:hover {
+      background:
+        rgba(124,92,255,0.22);
+
+      transform: translateY(-2px);
+    }
+
+    /* ==============================
+       TRAINING
+    ============================== */
+
+    .timeline {
+      position: relative;
+
+      max-width: 900px;
+    }
+
+    .timeline::before {
+      content: "";
+
+      position: absolute;
+
+      left: 15px;
+      top: 0;
+      bottom: 0;
+
+      width: 1px;
+
+      background:
+        linear-gradient(
+          var(--primary),
+          transparent
+        );
+    }
+
+    .timeline-item {
+      position: relative;
+
+      margin-left: 45px;
+
+      padding: 29px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+
+      left: -38px;
+      top: 35px;
+
+      width: 15px;
+      height: 15px;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--secondary)
+        );
+
+      box-shadow:
+        0 0 20px rgba(124,92,255,0.5);
+    }
+
+    .timeline-item h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .timeline-meta {
+      color: #9da8bc;
+
+      font-size: 13px;
+
+      margin-bottom: 18px;
+    }
+
+    .timeline-item ul {
+      padding-left: 19px;
+    }
+
+    .timeline-item li {
+      color: var(--muted);
+
+      font-size: 14px;
+
+      margin-bottom: 8px;
+    }
+
+    /* ==============================
+       EDUCATION
+    ============================== */
+
+    .education-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+    .edu {
+      padding: 27px;
+    }
+
+    .edu-year {
+      color: #a99cff;
+
+      font-size: 11px;
+
+      letter-spacing: 1px;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+    }
+
+    .edu h3 {
+      font-size: 20px;
+
+      margin:
+        13px 0 9px;
+    }
+
+    .edu p {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    /* ==============================
+       ACHIEVEMENTS
+    ============================== */
+
+    .achievement-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 18px;
+    }
+
+    .achievement {
+      display: flex;
+
+      gap: 18px;
+
+      padding: 27px;
+    }
+
+    .achievement-icon {
+      min-width: 53px;
+      height: 53px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(124,92,255,0.22),
+          rgba(33,212,253,0.12)
+        );
+
+      border:
+        1px solid rgba(124,92,255,0.28);
+
+      color: #d5ccff;
+
+      font-weight: 800;
+    }
+
+    .achievement h3 {
+      font-size: 18px;
+
+      margin-bottom: 7px;
+    }
+
+    .achievement p {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    /* ==============================
+       CONTACT
+    ============================== */
+
+    .contact {
+      padding: 50px;
+
+      border:
+        1px solid rgba(124,92,255,0.2);
+
+      border-radius: 30px;
+
+      background:
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(124,92,255,0.13),
+          transparent 35%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(18,27,46,0.9),
+          rgba(10,16,29,0.8)
+        );
+
+      box-shadow: var(--shadow);
+    }
+
+    .contact h2 {
+      font-size: clamp(35px, 5vw, 55px);
+
+      max-width: 750px;
+
+      letter-spacing: -2px;
+
+      line-height: 1.05;
+    }
+
+    .contact > p {
+      color: var(--muted);
+
+      max-width: 650px;
+
+      margin:
+        17px 0 29px;
+    }
+
+    .contact-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 13px;
+    }
+
+    .contact-link {
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+      padding: 17px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 15px;
+
+      background:
+        rgba(255,255,255,0.035);
+
+      transition: 0.25s;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-3px);
+
+      border-color:
+        rgba(124,92,255,0.4);
+
+      background:
+        rgba(124,92,255,0.06);
+    }
+
+    .contact-icon {
+      width: 43px;
+      height: 43px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 12px;
+
+      background:
+        rgba(124,92,255,0.12);
+
+      color: #c9c0ff;
+
+      font-weight: 800;
+    }
+
+    .contact-link small {
+      display: block;
+
+      color: #78849a;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+    }
+
+    .contact-link strong {
+      display: block;
+
+      margin-top: 2px;
+
+      font-size: 13px;
+
+      word-break: break-word;
+    }
+
+    /* ==============================
+       FOOTER
+    ============================== */
+
+    footer {
+      padding: 35px 0 45px;
+
+      border-top:
+        1px solid var(--border);
+
+      color: #667187;
+
+      font-size: 12px;
+
+      text-align: center;
+    }
+
+    /* ==============================
+       REVEAL ANIMATION
+    ============================== */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(25px);
+
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+    /* ==============================
+       RESPONSIVE
+    ============================== */
+
+    @media (max-width: 950px) {
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+      }
+
+      .hero-visual {
+        min-height: 390px;
+      }
+
+      .skills-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .education-grid {
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+      .web-projects-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+    }
+
+    @media (max-width: 760px) {
+
+      .container {
+        width:
+          min(
+            var(--max-width),
+            calc(100% - 28px)
+          );
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+
+        top: 76px;
+
+        left: 14px;
+        right: 14px;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 5px;
+
+        padding: 13px;
+
+        border:
+          1px solid var(--border);
+
+        border-radius: 17px;
+
+        background:
+          rgba(8,13,26,0.96);
+
+        backdrop-filter: blur(20px);
+
+        box-shadow:
+          0 20px 50px rgba(0,0,0,0.35);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+
+        padding: 11px 13px;
+      }
+
+      .nav-cta {
+        text-align: center;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+      }
+
+      .about-grid,
+      .achievement-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .education-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .web-project-card {
+        flex-direction: column;
+
+        gap: 15px;
+
+        min-height: auto;
+      }
+
+      .web-project-number {
+        width: 48px;
+      }
+
+      .timeline-item {
+        margin-left: 35px;
+      }
+
+      .timeline-dot {
+        left: -29px;
+      }
+
+      .contact {
+        padding: 30px 22px;
+      }
+
+    }
+
+    @media (max-width: 480px) {
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .profile-card {
+        padding: 22px;
+      }
+
+      .contact-link strong {
+        font-size: 12px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ==============================
+       NAVBAR
+  ============================== -->
+
+  <nav class="nav" id="navbar">
+
+    <div class="container nav-inner">
+
+      <a href="#home" class="brand">
+        Akhila<span>.</span>
+      </a>
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Open navigation menu">
+        ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+
+        <li>
+          <a href="#home" class="active">
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a href="#about">
+            About
+          </a>
+        </li>
+
+        <li>
+          <a href="#skills">
+            Skills
+          </a>
+        </li>
+
+        <li>
+          <a href="#projects">
+            Projects
+          </a>
+        </li>
+
+        <li>
+          <a href="#training">
+            Training
+          </a>
+        </li>
+
+        <li>
+          <a href="#education">
+            Education
+          </a>
+        </li>
+
+        <li>
+          <a href="#achievements">
+            Achievements
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="#contact"
+            class="nav-cta">
+            Contact
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </nav>
+
+
+  <main>
+
+    <!-- ==============================
+         HOME
+    ============================== -->
+
+    <section
+      class="hero"
+      id="home">
+
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="status">
+
+            <i></i>
+
+            Available for opportunities
+
+          </div>
+
+          <h1>
+
+            Hi, I'm
+            <span class="gradient">
+              Chinthala Akhila.
+            </span>
+
+          </h1>
+
+          <p class="hero-copy">
+
+            <strong>
+              Java Full-Stack Developer
+            </strong>
+            with a strong foundation in
+            Java, Spring Boot, REST APIs,
+            SQL and modern web development.
+            I enjoy building practical,
+            responsive and user-focused
+            applications.
+
+          </p>
+
+          <div class="hero-actions">
+
+            <a
+              href="#projects"
+              class="btn primary">
+
+              View Projects
+              →
+
+            </a>
+
+            <a
+              href="#contact"
+              class="btn">
+
+              Contact Me
+
+            </a>
+
+          </div>
+
+
+          <div class="socials">
+
+            <a
+              class="social"
+              href="https://github.com/chinthalaakhila"
+              target="_blank"
+              rel="noopener noreferrer">
+
+              GH
+
+            </a>
+
+            <a
+              class="social"
+              href="https://www.linkedin.com/in/chinthala-akhila"
+              target="_blank"
+              rel="noopener noreferrer">
+
+              in
+
+            </a>
+
+            <a
+              class="social"
+              href="mailto:chinthalakhila2005@gmail.com">
+
+              @
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+          <div class="orb"></div>
+
+          <div class="profile-card">
+
+            <div class="profile-top">
+
+              <div class="avatar">
+                CA
+              </div>
+
+              <div>
+
+                <h3>
+                  Chinthala Akhila
+                </h3>
+
+                <p>
+                  Java Full-Stack Developer
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="facts">
+
+              <div class="fact">
+
+                <span>
+                  Education
+                </span>
+
+                <span>
+                  B.Tech CSE
+                </span>
+
+              </div>
+
+              <div class="fact">
+
+                <span>
+                  CGPA
+                </span>
+
+                <span>
+                  9.09 / 10
+                </span>
+
+              </div>
+
+              <div class="fact">
+
+                <span>
+                  Focus
+                </span>
+
+                <span>
+                  Full-Stack Development
+                </span>
+
+              </div>
+
+              <div class="fact">
+
+                <span>
+                  Location
+                </span>
+
+                <span>
+                  India
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="mini-stack">
+
+              <span>Java</span>
+              <span>Spring Boot</span>
+              <span>SQL</span>
+              <span>React</span>
+              <span>REST APIs</span>
+              <span>HTML/CSS</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==============================
+         ABOUT
+    ============================== -->
+
+    <section
+      class="section"
+      id="about">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="eyebrow">
+            About Me
+          </span>
+
+          <h2>
+            Building with purpose.
+          </h2>
+
+          <p>
+            A developer who enjoys learning,
+            solving problems and turning ideas
+            into useful applications.
+          </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+          <article
+            class="glass about-card reveal">
+
+            <h3>
+              Who I am
+            </h3>
+
+            <p>
+              I am a Computer Science Engineering
+              graduate with a strong interest in
+              Java Full-Stack Development and
+              software engineering.
+            </p>
+
+            <p>
+              I have hands-on experience with
+              Java, Spring Boot, REST APIs,
+              databases and frontend technologies.
+            </p>
+
+          </article>
+
+
+          <article
+            class="glass about-card reveal">
+
+            <h3>
+              What I do
+            </h3>
+
+            <p>
+              I build responsive web interfaces,
+              backend services, database-driven
+              applications and RESTful APIs.
+            </p>
+
+            <p>
+              I am continuously improving my
+              programming, debugging, problem-solving
+              and software development skills.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==============================
+         SKILLS
+    ============================== -->
+
+    <section
+      class="section"
+      id="skills">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="eyebrow">
+            Technical Skills
+          </span>
+
+          <h2>
+            My toolkit.
+          </h2>
+
+        </div>
+
+
+        <div class="skills-grid">
+
+
+          <article
+            class="glass skill-card reveal">
+
+            <h3>
+              Programming
+            </h3>
+
+            <div class="skill-tags">
+
+              <span>Java</span>
+              <span>Python</span>
+              <span>SQL</span>
+
+            </div>
+
+          </article>
+
+
+          <article
+            class="glass skill-card reveal">
+
+            <h3>
+              Frontend
+            </h3>
+
+            <div class="skill-tags">
+
+              <span>HTML5</span>
+              <span>CSS3</span>
+              <span>JavaScript</span>
+              <span>React.js</span>
+
+            </div>
+
+          </article>
+
+
+          <article
+            class="glass skill-card reveal">
+
+            <h3>
+              Backend
+            </h3>
+
+            <div class="skill-tags">
+
+              <span>Spring</span>
+              <span>Spring Boot</span>
+              <span>Hibernate</span>
+              <span>REST APIs</span>
+              <span>JWT</span>
+
+            </div>
+
+          </article>
+
+
+          <article
+            class="glass skill-card reveal">
+
+            <h3>
+              Database
+            </h3>
+
+            <div class="skill-tags">
+
+              <span>MySQL</span>
+              <span>SQL Server</span>
+              <span>Oracle</span>
+              <span>SQL Optimization</span>
+
+            </div>
+
+          </article>
+
+
+          <article
+            class="glass skill-card reveal">
+
+            <h3>
+              Core Concepts
+            </h3>
+
+            <div class="skill-tags">
+
+              <span>OOPS</span>
+              <span>Operating Systems</span>
+              <span>Computer Networks</span>
+              <span>DBMS</span>
+
+            </div>
+
+          </article>
+
+
+          <article
+            class="glass skill-card reveal">
+
+            <h3>
+              Tools & Technologies
+            </h3>
+
+            <div class="skill-tags">
+
+              <span>Git</span>
+              <span>GitHub</span>
+              <span>Docker</span>
+              <span>Apache Tomcat</span>
+              <span>Power BI</span>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==============================
+         PROJECTS
+         Academic project removed
+    ============================== -->
+
+    <section
+      class="section"
+      id="projects">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="eyebrow">
+            Selected Work
+          </span>
+
+          <h2>
+            Projects.
+          </h2>
+
+          <p>
+            A collection of web development
+            projects created using HTML, CSS
+            and JavaScript.
+          </p>
+
+        </div>
+
+
+        <div class="web-projects-grid">
+
+
+          <!-- PROJECT 01 -->
+
+          <article
+            class="glass web-project-card reveal">
+
+            <div class="web-project-number">
+              01
+            </div>
+
+            <div class="web-project-content">
+
+              <div class="web-project-type">
+                Web Development
+              </div>
+
+              <h3>
+                Multimedia Website
+              </h3>
+
+              <p>
+                A multimedia-based website created
+                using HTML and CSS to organize and
+                present different multimedia elements
+                in a clean and responsive interface.
+              </p>
+
+              <div class="project-tech">
+
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>Web Design</span>
+
+              </div>
+
+              <a
+                class="project-link"
+                href="https://chinthalaakhila.github.io/Multimedia/"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                View Project →
+                
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 02 -->
+
+          <article
+            class="glass web-project-card reveal">
+
+            <div class="web-project-number">
+              02
+            </div>
+
+            <div class="web-project-content">
+
+              <div class="web-project-type">
+                Web Development
+              </div>
+
+              <h3>
+                Course Registration Website
+              </h3>
+
+              <p>
+                A course registration website designed
+                to display course information and provide
+                users with a simple and structured
+                registration interface.
+              </p>
+
+              <div class="project-tech">
+
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>Forms</span>
+
+              </div>
+
+              <a
+                class="project-link"
+                href="https://chinthalaakhila.github.io/Course-Registration/"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                View Project →
+
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 03 -->
+
+          <article
+            class="glass web-project-card reveal">
+
+            <div class="web-project-number">
+              03
+            </div>
+
+            <div class="web-project-content">
+
+              <div class="web-project-type">
+                HTML & CSS
+              </div>
+
+              <h3>
+                HTML Lists Website
+              </h3>
+
+              <p>
+                A website demonstrating different types
+                of HTML lists, including ordered,
+                unordered and descriptive lists with
+                a simple and organized layout.
+              </p>
+
+              <div class="project-tech">
+
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>Lists</span>
+
+              </div>
+
+              <a
+                class="project-link"
+                href="https://chinthalaakhila.github.io/List/"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                View Project →
+
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 04 -->
+
+          <article
+            class="glass web-project-card reveal">
+
+            <div class="web-project-number">
+              04
+            </div>
+
+            <div class="web-project-content">
+
+              <div class="web-project-type">
+                HTML & CSS
+              </div>
+
+              <h3>
+                HTML Tables Website
+              </h3>
+
+              <p>
+                A table-based website created to
+                demonstrate HTML table structures,
+                rows, columns, headings and organized
+                data presentation.
+              </p>
+
+              <div class="project-tech">
+
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>Tables</span>
+
+              </div>
+
+              <a
+                class="project-link"
+                href="https://chinthalaakhila.github.io/Tables/"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                View Project →
+
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 05 -->
+
+          <article
+            class="glass web-project-card reveal">
+
+            <div class="web-project-number">
+              05
+            </div>
+
+            <div class="web-project-content">
+
+              <div class="web-project-type">
+                Web Development
+              </div>
+
+              <h3>
+                Travel Planner
+              </h3>
+
+              <p>
+                A travel planning website designed
+                to help users explore destinations
+                and organize travel information through
+                a simple and user-friendly interface.
+              </p>
+
+              <div class="project-tech">
+
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+
+              </div>
+
+              <a
+                class="project-link"
+                href="https://chinthalaakhila.github.io/Travel-planner/"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                View Project →
+
+              </a>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==============================
+         TRAINING
+    ============================== -->
+
+    <section
+      class="section"
+      id="training">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="eyebrow">
+            Training & Experience
+          </span>
+
+          <h2>
+            Learning by building.
+          </h2>
+
+          <p>
+            Practical experience and structured
+            Java Full-Stack development training.
+          </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+          <article
+            class="glass timeline-item reveal">
+
+            <span class="timeline-dot"></span>
+
+            <h3>
+              Java Developer Intern
+            </h3>
+
+            <p class="timeline-meta">
+              Codetantra · 2025 – 2026
+            </p>
+
+            <ul>
+
+              <li>
+                Developed and practiced
+                <strong>Java Full-Stack</strong>
+                development through hands-on
+                projects and coding tasks.
+              </li>
+
+              <li>
+                Worked with
+                <strong>
+                  Java, Spring Boot, REST APIs,
+                  MySQL, HTML, CSS and JavaScript.
+                </strong>
+              </li>
+
+              <li>
+                Implemented backend functionality,
+                database integration and REST API
+                development.
+              </li>
+
+              <li>
+                Strengthened problem-solving,
+                debugging and software development
+                skills through practical assignments.
+              </li>
+
+            </ul>
+
+          </article>
+
+
+          <article
+            class="glass timeline-item reveal">
+
+            <span class="timeline-dot"></span>
+
+            <h3>
+              Java Full-Stack Developer Training
+            </h3>
+
+            <p class="timeline-meta">
+              Tap Academy, Bangalore ·
+              July 2026 – Present
+            </p>
+
+            <ul>
+
+              <li>
+                Structured training in Core Java,
+                Spring Boot, Spring MVC,
+                Hibernate and MySQL.
+              </li>
+
+              <li>
+                Hands-on practice with HTML,
+                CSS, JavaScript and REST APIs.
+              </li>
+
+              <li>
+                Practical work with authentication,
+                database integration and
+                backend services.
+              </li>
+
+              <li>
+                Use of Git and GitHub in
+                application development workflows.
+              </li>
+
+            </ul>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==============================
+         EDUCATION
+    ============================== -->
+
+    <section
+      class="section"
+      id="education">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="eyebrow">
+            Academic Background
+          </span>
+
+          <h2>
+            Education.
+          </h2>
+
+        </div>
+
+
+        <div class="education-grid">
+
+
+          <article
+            class="glass edu reveal">
+
+            <span class="edu-year">
+              2022 — 2026
+            </span>
+
+            <h3>
+              B.Tech —
+              Computer Science Engineering
+            </h3>
+
+            <p>
+              PBR Visvodaya Institute of
+              Technology and Science, Kavali
+            </p>
+
+            <p
+              style="
+                margin-top:10px;
+                color:#fff;
+                font-weight:700;
+              ">
+
+              CGPA: 9.09 / 10
+
+            </p>
+
+          </article>
+
+
+          <article
+            class="glass edu reveal">
+
+            <span class="edu-year">
+              2020 — 2022
+            </span>
+
+            <h3>
+              Intermediate
+            </h3>
+
+            <p>
+              Sri Vema Junior College,
+              Naidupet
+            </p>
+
+            <p
+              style="
+                margin-top:10px;
+                color:#fff;
+                font-weight:700;
+              ">
+
+              Score: 76.4%
+
+            </p>
+
+          </article>
+
+
+          <article
+            class="glass edu reveal">
+
+            <span class="edu-year">
+              2019 — 2020
+            </span>
+
+            <h3>
+              Secondary School Certificate
+            </h3>
+
+            <p>
+              Z.P. High School,
+              Puduru
+            </p>
+
+            <p
+              style="
+                margin-top:10px;
+                color:#fff;
+                font-weight:700;
+              ">
+
+              GPA: 9.3 / 10
+
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==============================
+         ACHIEVEMENTS
+    ============================== -->
+
+    <section
+      class="section"
+      id="achievements">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="eyebrow">
+            Recognition
+          </span>
+
+          <h2>
+            Achievements & activities.
+          </h2>
+
+        </div>
+
+
+        <div class="achievement-grid">
+
+
+          <article
+            class="glass achievement reveal">
+
+            <div class="achievement-icon">
+              ML
+            </div>
+
+            <div>
+
+              <h3>
+                ML Storm Hackathon
+              </h3>
+
+              <p>
+                Participated in a machine learning
+                project focused on predicting
+                student performance during 2022–2025.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article
+            class="glass achievement reveal">
+
+            <div class="achievement-icon">
+              #2
+            </div>
+
+            <div>
+
+              <h3>
+                Top 2 Rank Award
+              </h3>
+
+              <p>
+                Recognized for academic performance
+                in the fourth year of B.Tech.
+              </p>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==============================
+         CONTACT
+    ============================== -->
+
+    <section
+      class="section"
+      id="contact">
+
+      <div class="container">
+
+        <div class="contact reveal">
+
+          <span class="eyebrow">
+            Get In Touch
+          </span>
+
+          <h2>
+            Have an opportunity?
+            Let's build something useful.
+          </h2>
+
+          <p>
+
+            I'm interested in Java Development,
+            Full-Stack Development,
+            Software Engineering and
+            AI/ML opportunities.
+
+          </p>
+
+
+          <div class="contact-grid">
+
+
+            <a
+              class="contact-link"
+              href="mailto:chinthalakhila2005@gmail.com">
+
+              <span class="contact-icon">
+                @
+              </span>
+
+              <span>
+
+                <small>
+                  Email
+                </small>
+
+                <strong>
+                  chinthalakhila2005@gmail.com
+                </strong>
+
+              </span>
+
+            </a>
+
+
+            <a
+              class="contact-link"
+              href="tel:+916304101476">
+
+              <span class="contact-icon">
+                ☎
+              </span>
+
+              <span>
+
+                <small>
+                  Phone
+                </small>
+
+                <strong>
+                  +91 63041 01476
+                </strong>
+
+              </span>
+
+            </a>
+
+
+            <a
+              class="contact-link"
+              href="https://www.linkedin.com/in/chinthala-akhila"
+              target="_blank"
+              rel="noopener noreferrer">
+
+              <span class="contact-icon">
+                in
+              </span>
+
+              <span>
+
+                <small>
+                  LinkedIn
+                </small>
+
+                <strong>
+                  linkedin.com/in/chinthala-akhila
+                </strong>
+
+              </span>
+
+            </a>
+
+
+            <a
+              class="contact-link"
+              href="https://github.com/chinthalaakhila"
+              target="_blank"
+              rel="noopener noreferrer">
+
+              <span class="contact-icon">
+                GH
+              </span>
+
+              <span>
+
+                <small>
+                  GitHub
+                </small>
+
+                <strong>
+                  github.com/chinthalaakhila
+                </strong>
+
+              </span>
+
+            </a>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ==============================
+       FOOTER
+  ============================== -->
+
+  <footer>
+
+    <div class="container">
+
+      © 2026 Chinthala Akhila ·
+      Designed & built with HTML, CSS & JavaScript.
+
+    </div>
+
+  </footer>
+
+
+  <!-- ==============================
+       JAVASCRIPT
+  ============================== -->
+
+  <script>
+
+    /* NAVBAR */
+
+    const navbar =
+      document.getElementById("navbar");
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        navbar.classList.toggle(
+          "scrolled",
+          window.scrollY > 20
+        );
+
+      }
+    );
+
+
+    /* MOBILE MENU */
+
+    const menuBtn =
+      document.getElementById("menuBtn");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+
+    menuBtn.addEventListener(
+      "click",
+      () => {
+
+        navLinks.classList.toggle("open");
+
+        menuBtn.textContent =
+          navLinks.classList.contains("open")
+            ? "✕"
+            : "☰";
+
+      }
+    );
+
+
+    document
+      .querySelectorAll("#navLinks a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            navLinks.classList.remove("open");
+
+            menuBtn.textContent = "☰";
+
+          }
+        );
+
+      });
+
+
+    /* ACTIVE NAVIGATION */
+
+    const sections =
+      document.querySelectorAll(
+        "main section[id]"
+      );
+
+    const links =
+      document.querySelectorAll(
+        ".nav-links a"
+      );
+
+
+    const activeObserver =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              links.forEach(
+                link =>
+                  link.classList.remove("active")
+              );
+
+              const active =
+                document.querySelector(
+                  `.nav-links a[href="#${entry.target.id}"]`
+                );
+
+              if (active) {
+                active.classList.add("active");
+              }
+
+            }
+
+          });
+
+        },
+
+        {
+          rootMargin:
+            "-35% 0px -55% 0px"
+        }
+
+      );
+
+
+    sections.forEach(
+      section =>
+        activeObserver.observe(section)
+    );
+
+
+    /* SCROLL REVEAL */
+
+    const revealObserver =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("show");
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach(
+        element =>
+          revealObserver.observe(element)
+      );
+
+  </script>
+
+</body>
+</html>
